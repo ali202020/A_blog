@@ -1,0 +1,38 @@
+/*====================================
+========== Document styling ==============
+=====================================*/
+
+body {
+  background-color: $white-ter !important;
+}
+
+nav {
+  height: 55px;
+
+  navbar-brand {
+    img {
+      height: 100px;
+      width:100px;
+
+    }
+  }
+
+}
+
+
+
+
+
+/*====================================
+========== Text styling ==============
+=====================================*/
+
+
+.is-muted {
+  color : $grey-light !important;
+}
+
+a.is-muted:hover {
+  color: $grey !important;
+
+}
