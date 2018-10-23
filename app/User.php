@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
+use App\Role;
 
 class User extends Authenticatable
 {
@@ -28,4 +29,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function role(){
+      return $this->belongsTo('App\Role');
+    }
+
+    public function posts(){
+      return $this->hasMany('App\Post','post_writer_id');
+    }
+
+
 }
