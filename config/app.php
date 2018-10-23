@@ -177,6 +177,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
+        Mews\Purifier\PurifierServiceProvider::class,
+        DevMarketer\LaraFlash\LaraFlashServiceProvider::class,
+
 
     ],
 
@@ -227,6 +230,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Laratrust' => Laratrust\LaratrustFacade::class,
+        'Purifier' => Mews\Purifier\Facades\Purifier::class,
+        'LaraFlash' => DevMarketer\LaraFlash\LaraFlashFacade::class,
+
     ],
 
 ];

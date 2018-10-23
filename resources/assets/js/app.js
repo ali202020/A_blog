@@ -9,7 +9,11 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+window.Slug = require('slug');
+
 import Buefy from 'buefy';
+
+
 
 Vue.use(Buefy);
 
@@ -19,10 +23,11 @@ Vue.use(Buefy);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-//Vue.component('example', require('./components/Example.vue'));
+Vue.component('slug-widget', require('./components/slug_widget.vue'));
 
 
-var app = new Vue({
-  el : '#app',
-  data : {}
-})
+//flash message
+$('.flash-message').delay(2000).fadeOut(500);
+
+
+// var app = new Vue({});
