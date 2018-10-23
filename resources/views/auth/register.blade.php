@@ -40,7 +40,7 @@
               <div class="field">
                 <label class="label {{ $errors->has('password') ? ' is-danger ' : '' }}">Password : </label>
                 <p class="control has-icons-left">
-                  <input id="password" class="input" type="password" placeholder="Password" required>
+                  <input id="password" class="input" type="password" placeholder="Password" name="password" required>
                   <span class="icon is-small is-left">
                     <i class="fa fa-lock"></i>
                   </span>
