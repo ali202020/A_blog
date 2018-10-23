@@ -1,5 +1,5 @@
 <!-- heading -->
-# The 'A' Blog
+# <p align="center">The 'A' Blog</p>
 
 * The 'A' blog is a blog website implemented in Laravel 5.5 and is intended to be and interactive platform , in which users and publish posts and expressing their opinions by commenting on each other posts.
 ____
