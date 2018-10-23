@@ -43,22 +43,26 @@
                   <div class="navbar-dropdown">
                     <a class="navbar-item" href="#">
                       <span class="icon"><i class="fa fa-user-circle"></i></span>
-                        Profile
+                         Profile
                     </a>
                     <a class="navbar-item" href="#">
                       <span class="icon"><i class="fa fa-bell"></i></span>
-                      Notifications
+                       Notifications
                     </a>
-                    <a class="navbar-item" href="#">
+                    <a class="navbar-item" href="{{route('manage.dashboard')}}">
                       <span class="icon"><i class="fa fa-cog"></i></span>
-                        Settings
+                         Manage
                     </a>
                     <hr class="navbar-divider">
 
-                    <a class="navbar-item" href="#">
+                    <a class="navbar-item" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                       <span class="icon"><i class="fa fa-sign-out"></i></span>
-                      Logout
+                       Logout
                     </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
 
                   </div>
                 </div>
@@ -75,5 +79,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    {{-- @include('_includes.notifications.toast') --}}
+    @yield('scripts')
 </body>
 </html>
