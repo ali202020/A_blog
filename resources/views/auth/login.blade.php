@@ -8,7 +8,7 @@
           <div class="card-content">
             <h1 class="title">Login</h1>
             <hr>
-            <form action="{{ route('login') }}" method="POST" role="form">
+            <form action="{{ route('login') }}" method="POST" role="form">              
               {{ csrf_field() }}
               <div class="field">
                 <label class="label">Email Address : </label>

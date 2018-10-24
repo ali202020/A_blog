@@ -18,10 +18,24 @@ Route::get('/', function () {
 Auth::routes();
 
 
+//********************
+//*** User routes ****
+//********************
+Route::get('/user/{user}','UserController@show')->name('user.show');
+Route::get('/user/{user}/edit','UserController@edit')->name('user.edit');
+Route::put('/user/{user}','UserController@update')->name('user.update');
+Route::delete('/user/{user}','UserController@destroy')->name('user.destroy');
+//********************
+
+
+
 Route::prefix('manage')->group(function(){
   Route::get('/','ManageController@index')->name('manage.index');
   Route::get('/dashboard','ManageController@dashboard')->name('manage.dashboard');
-  Route::resource('/users','UserController');
+
+  //********************
+  //*** Posts routes ***
+  //********************
   Route::resource('/posts','PostController');
 });
 

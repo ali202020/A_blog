@@ -5,71 +5,14 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\DB;
-use App\Role;
 use Illuminate\Support\Facades\Session;
 
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $users = User::with('role')->paginate(5);
-        return view('manage.users.index')->with('users',$users);
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $roles = Role::all();
-        return view('manage.users.create')->withRoles($roles);
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //validating Data
-        $this->validate($request,[
-          'name' => 'required|max:255',
-          'email' => 'required|email|unique:users',
-          'role' => 'required'
-        ]);
-        //Creating new model and storing Data
-
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $pass = $request->password;
-        $user->password = Hash::make($pass);
-        $user->api_token = bin2hex(openssl_random_pseudo_bytes(30));
-        $user->role_id = $request->role;
-
-        if ($user->save()) {
-          //flash (success)
-          $request->session()->flash('status', 'User Created Successfully');
-          //Redirecting
-          return redirect()->route('users.show',['id' => $user->id]);
-        }else{
-          //flash (fail)
-          $request->session()->flash('status', 'Failed to Create User , Invalid Inputs');
-          //Redirecting
-          return redirect()->route('users.create')->with('fail','Failed To Create User');
-        }
-    }
-
+    
     /**
      * Display the specified resource.
      *
@@ -92,8 +35,7 @@ class UserController extends Controller
     public function edit($id)
     {
       $user = User::findOrFail($id);
-      $roles = Role::all();
-      return view('manage.users.edit',['roles'=>$roles,'user'=>$user]);
+      return view('manage.users.edit',['user'=>$user]);
     }
 
     /**
@@ -127,18 +69,18 @@ class UserController extends Controller
           $user->email = $request->email;
           $user->password = Hash::make($request->password);
         }
-        $user->role_id = $request->role;
+
         //saving and Redirecting
         if ($user->save()) {
           //flash (success)
-           $request->session()->flash('status', 'User Updated Successfully');
+           $request->session()->flash('status', 'Your profile Updated Successfully');
            //saving and Redirecting
           return redirect()->route('users.show',$id);
         }else{
           //flash (fail)
-           $request->session()->flash('status', 'Failed to Update User , Invalid Inputs');
+           $request->session()->flash('status', 'Failed to Update Your profile , Invalid Inputs');
           //saving and Redirecting
-          return redirect()->route('users.edit')->with('fail','Failed to Edit User');
+          return redirect()->route('users.edit');
         }
     }
 
@@ -155,7 +97,7 @@ class UserController extends Controller
         //flash success
         Session::flash('success-delete', 'Record Deleted Successfully');
         //Redirecting
-        return redirect()->route('users.index');
+        return redirect()->back();
 
     }
 }

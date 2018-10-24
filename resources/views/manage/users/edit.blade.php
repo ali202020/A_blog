@@ -13,17 +13,7 @@
       @endif
       {{-- *******  End of Flash Message  ********--}}
 
-      <div class="column">
-        <h1 class="title">Manage Users</h1>
-      </div>
-
-      <div class="column">
-        <a href="{{route('users.create')}}" class="button is-primary is-rounded is-outlined is-pulled-right">Create New User<i class="fa fa-user"></i></a>
-      </div>
-    </div>
-    <hr style="margin:0px;">
-
-    <form action="{{ route('users.update', $user->id) }}" method="POST" role="form">
+    <form action="{{ route('user.update', $user->id) }}" method="POST" role="form">
       {{ csrf_field() }}
       {{ method_field('PATCH') }}
       <div class="column">
@@ -36,7 +26,6 @@
                   <th>Name</th>
                   <th>Email</th>
                   <th>New Password</th>
-                  <th>Role</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -57,17 +46,6 @@
                   </td>
 
                   <td>
-                    <div class="select is-primary">
-                      <select name="role">
-                        @foreach ($roles as $role)
-                          <option value="{{ $role->id }}" @if($role->id == $user->role->id) {{"selected"}}@endif }}>{{ $role->display_name }}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                  </td>
-
-                  <td>
-
                     <div class="field">
                       <p class="control">
                         <button class="button is-outlined is-primary is-fullwidth">
@@ -78,7 +56,7 @@
                     </form>
 
                     {{-- this is Deletion form --}}
-                    <form method="POST" id="Delete-form" action="{{ route('users.destroy', ['id' => $user->id]) }}" role="form" style="display: hidden;">
+                    <form method="POST" id="Delete-form" action="{{ route('user.destroy', ['id' => $user->id]) }}" role="form" style="display: hidden;">
                       {{ csrf_field() }}
                       {{ method_field('DELETE') }}
                       <div class="field">

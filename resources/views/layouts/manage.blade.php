@@ -50,7 +50,7 @@
                   </a>
 
                   <div class="navbar-dropdown">
-                    <a class="navbar-item" href="#">
+                    <a class="navbar-item" href="{{route('user.show',['id' => Auth::user()->id])}}">
                       <span class="icon"><i class="fa fa-user-circle"></i></span>
                         Profile
                     </a>
@@ -97,13 +97,6 @@
               <li><a href="{{route('posts.index')}}">Manage Posts</a></li>
             </ul>
 
-            <p class="menu-label">
-              Adminstration
-            </p>
-            <ul class="menu-list">
-              <li><a href="{{route('users.index')}}">Manage Users</a></li>
-              <li><a href="#">Roles &amp; Permissions</a></li>
-            </ul>
           </aside>
         </div>
 
