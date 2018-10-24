@@ -16,10 +16,10 @@ class PostController extends Controller
 {
 
 
-    public function __construct()
-    {
-      $this->middleware('role:superadministrator|adminstrator|author|contributor|editor');
-    }
+    // public function __construct()
+    // {
+    //   $this->middleware('auth');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +28,7 @@ class PostController extends Controller
     public function index()
     {
 
-      $posts = Post::where('post_writer_id','=',Auth::user()->id)->get();
+      $posts = Post::where('user_id','=',Auth::user()->id)->get();
       //return json_encode($posts);
       return view('manage.posts.index')->withPosts($posts);
 
@@ -61,7 +61,7 @@ class PostController extends Controller
        $post->excerpt        = $request->excerpt;
        $post->content        = Purifier::clean($request->content);
        $post->published_at   = Carbon::now()->toDateTimeString();
-       $post->post_writer_id = Auth::user()->id;
+       $post->user_id        = Auth::user()->id;
        if($post->save()){
          //flash (success)
          $request->session()->flash('status', 'Post Created Successfully');
