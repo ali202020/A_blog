@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2550757ac7169c75282804930b9c1d1c",
+    "content-hash": "32972b98f67b01ce374b5ca50068f915",
     "packages": [
         {
             "name": "devmarketer/laraflash",
@@ -341,51 +341,6 @@
             ],
             "description": "Highlight PHP code in terminal",
             "time": "2018-09-29T18:48:56+00:00"
-        },
-        {
-            "name": "kkszymanowski/traitor",
-            "version": "0.2.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/KKSzymanowski/Traitor.git",
-                "reference": "9770fc7de72ff585601dc9c42b31715d9fc40a24"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/KKSzymanowski/Traitor/zipball/9770fc7de72ff585601dc9c42b31715d9fc40a24",
-                "reference": "9770fc7de72ff585601dc9c42b31715d9fc40a24",
-                "shasum": ""
-            },
-            "require": {
-                "nikic/php-parser": "^1.0|^2.0|^3.0|^4.0",
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Traitor\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kuba Szymanowski",
-                    "email": "kuba.szymanowski@inf24.pl"
-                }
-            ],
-            "description": "Add a trait use statement to existing PHP class",
-            "keywords": [
-                "add",
-                "php",
-                "trait"
-            ],
-            "time": "2018-04-19T12:24:36+00:00"
         },
         {
             "name": "laravel/framework",
@@ -1217,75 +1172,6 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
-        },
-        {
-            "name": "santigarcor/laratrust",
-            "version": "5.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/santigarcor/laratrust.git",
-                "reference": "526cc3e8970c35b97c71a7a6d8b63c2073568bb1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/526cc3e8970c35b97c71a7a6d8b63c2073568bb1",
-                "reference": "526cc3e8970c35b97c71a7a6d8b63c2073568bb1",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/auth": "~5.2",
-                "illuminate/cache": "~5.2",
-                "illuminate/console": "~5.2",
-                "illuminate/database": "^5.2.32",
-                "illuminate/support": "~5.2",
-                "kkszymanowski/traitor": "^0.2.0",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "mockery/mockery": ">=0.9.9",
-                "orchestra/testbench": "~3.2",
-                "phpunit/phpunit": ">=4.1"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Laratrust\\LaratrustServiceProvider"
-                    ],
-                    "aliases": {
-                        "Laratrust": "Laratrust\\LaratrustFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laratrust\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Santiago Garcia",
-                    "homepage": "http://santigarcor.me"
-                }
-            ],
-            "description": "This package provides a flexible way to add Role-based Permissions to Laravel",
-            "keywords": [
-                "Teams",
-                "acl",
-                "authorization",
-                "laratrust",
-                "laravel",
-                "multiusers",
-                "permissions",
-                "php",
-                "rbac",
-                "roles"
-            ],
-            "time": "2018-03-05T13:21:52+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2262,16 +2148,16 @@
         },
         {
             "name": "tinymce/tinymce",
-            "version": "4.8.3",
+            "version": "4.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tinymce/tinymce-dist.git",
-                "reference": "e6ad606b0da07cc7d1847f01d5d89b42920d5bc2"
+                "reference": "bf8376eb0006effc20c10202bbb8abbfe4cfd310"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/e6ad606b0da07cc7d1847f01d5d89b42920d5bc2",
-                "reference": "e6ad606b0da07cc7d1847f01d5d89b42920d5bc2",
+                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/bf8376eb0006effc20c10202bbb8abbfe4cfd310",
+                "reference": "bf8376eb0006effc20c10202bbb8abbfe4cfd310",
                 "shasum": ""
             },
             "type": "component",
@@ -2304,7 +2190,7 @@
                 "tinymce",
                 "wysiwyg"
             ],
-            "time": "2018-09-13T14:31:22+00:00"
+            "time": "2018-10-23T12:33:19+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

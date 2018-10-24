@@ -4,12 +4,9 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laratrust\Traits\LaratrustUserTrait;
-use App\Role;
 
 class User extends Authenticatable
 {
-    use LaratrustUserTrait;
     use Notifiable;
 
     /**
@@ -30,9 +27,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function role(){
-      return $this->belongsTo('App\Role');
-    }
 
     public function posts(){
       return $this->hasMany('App\Post','post_writer_id');
