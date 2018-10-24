@@ -23,7 +23,7 @@ Auth::routes();
 //********************
 Route::get('/user/{user}','UserController@show')->name('user.show');
 Route::get('/user/{user}/edit','UserController@edit')->name('user.edit');
-Route::put('/user/{user}','UserController@update')->name('user.update');
+Route::patch('/user/{user}','UserController@update')->name('user.update');
 Route::delete('/user/{user}','UserController@destroy')->name('user.destroy');
 //********************
 

@@ -10,9 +10,13 @@ use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
+    //Adding 'Auth' middleware
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
 
 
-    
     /**
      * Display the specified resource.
      *
@@ -75,12 +79,12 @@ class UserController extends Controller
           //flash (success)
            $request->session()->flash('status', 'Your profile Updated Successfully');
            //saving and Redirecting
-          return redirect()->route('users.show',$id);
+          return redirect()->route('user.show',$id);
         }else{
           //flash (fail)
            $request->session()->flash('status', 'Failed to Update Your profile , Invalid Inputs');
           //saving and Redirecting
-          return redirect()->route('users.edit');
+          return redirect()->route('user.edit');
         }
     }
 
