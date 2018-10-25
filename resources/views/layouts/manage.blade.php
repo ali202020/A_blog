@@ -64,9 +64,9 @@
                     </a>
                     <hr class="navbar-divider">
 
-                    //************************************
-                    //**********   logout Form    ********
-                    //************************************
+                    {{-- ************************************ --}}
+                    {{-- **********   logout Form    ******** --}}
+                    {{-- ************************************ --}}
                     <a class="navbar-item" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                       <span class="icon"><i class="fa fa-sign-out"></i></span>
                        Logout
@@ -75,7 +75,7 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
-                    /**************************************
+                    {{-- ************************************** --}}
 
                   </div>
                 </div>
