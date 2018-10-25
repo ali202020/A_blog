@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -172,10 +173,13 @@ return [
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
+        //Observers service provider
+        App\Providers\ObserverServiceProvider::class,
+        //****************************
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,        
+        App\Providers\RouteServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
         DevMarketer\LaraFlash\LaraFlashServiceProvider::class,
 
