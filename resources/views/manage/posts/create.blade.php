@@ -1,5 +1,4 @@
-@extends('layouts.manage')
-
+@extends('layouts.app')
 @section('content')
   <div class="flex-container">
     {{-- *******  Start of Flash Message  ********--}}
@@ -37,6 +36,26 @@
           </div>
 
          {{-- *******  End of Post slug  ********--}}
+
+         {{-- *******  Start of Categories  ********--}}
+         <div class="field">
+          <label class="label">Category :</label>
+          <div class="control">
+            <div class="select is-primary">
+              {{-- Future work: here will be added an input for the user to enter the category --}}
+              <select name="category">
+                <option value="Others" selected>Others(Default)</option>
+                <option value="Social">Social</option>
+                <option value="Medical">Medical</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Automotives">Automotives</option>
+                <option value="Mechanics">Mechanics</option>
+                <option value="Mathematical">Mathematical</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        {{-- *******  End of Categories  ********--}}
 
          <div class="field">
            <label for="content" class="label">Post title : </label>

@@ -1,4 +1,4 @@
-@extends('layouts.manage')
+@extends('layouts.app')
 
 @section('content')
   <div class="flex-container p-l-10">
@@ -13,7 +13,7 @@
     @endif
     {{-- *******  End of Flash Message  ********--}}
 
-    <div class="columns m-t-10"> 
+    <div class="columns m-t-10">
 
     </div>
     <hr style="margin:0px;">

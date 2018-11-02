@@ -25,7 +25,6 @@ Vue.use(Buefy);
 
 Vue.component('slug-widget', require('./components/slug_widget.vue'));
 
-
 //flash message
 $('.flash-message').delay(2000).fadeOut(500);
 

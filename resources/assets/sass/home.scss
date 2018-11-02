@@ -1,0 +1,63 @@
+// ****************************************
+// *****  Start Customizing Home Page  ****
+// ****************************************
+
+
+// Secondary Navbar Customization
+//-------------------------------
+.secondary-nav{
+  background:#FFFFFF;
+  border-top: 1px solid #ecf0f1;
+
+  //DropDown button customization
+  .custom-dropdown-btn{
+    background: white;
+    color: rgb(0, 209, 178);
+    margin-top: 3px;
+
+  }
+  .custom-dropdown-btn:hover{
+    cursor:pointer;
+  }
+  //DropDown "Sort" title Customization
+  .sort-title{
+    background: white;
+    margin-top: 3px;
+    font-weight: 500;
+    color: rgb(124, 124, 124);
+  }
+}
+
+
+//Posts Container Customization
+//-------------------------------
+.posts-container
+{
+  margin-top: 15px;
+  .is-customized-tile{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .tags{
+    display: inline-flex;
+    padding:0px;
+    margin:0px;
+    .tag{
+      padding:5px;
+    }
+    .custom-title{
+      margin-bottom: 7px !important;
+    }
+  }
+
+}
+
+//Create Post Widget Customization
+//--------------------------------
+.post-widget-container
+{
+  align-items: center;
+  justify-content: center;
+}

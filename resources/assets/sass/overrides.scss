@@ -2,28 +2,28 @@
 ========== Document styling ==============
 =====================================*/
 
-
-
-body {
-  background-color: $white-ter !important;
-}
-
-html{
+//************************
+// HTML styling Overrides
+//************************
+html
+{
   background-color: #F5F5F5 !important;
 }
 
-nav {
-  height: 55px;
-
-  navbar-brand {
-    img {
-      height: 100px;
-      width:100px;
-
-    }
+//************************
+// Body styling Overrides
+//************************
+body
+{
+  //background-color: $white-ter !important;
+  .ground-img{
+    background-image: url("/images/blog_7.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
-
 }
+
+
 
 
 

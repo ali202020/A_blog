@@ -1,4 +1,4 @@
-@extends('layouts.manage')
+@extends('layouts.app')
 
 @section('content')
   <div class="flex-container">
@@ -41,6 +41,26 @@
 
          {{-- *******  End of Post slug  ********--}}
 
+         {{-- *******  Start of Categories  ********--}}
+         <div class="field">
+          <label class="label">Category :</label>
+          <div class="control">
+            <div class="select is-primary">
+              {{-- Future work: here will be added an input for the user to enter the category --}}
+              <select name="category">
+                <option value="Others" @if ($post->category === "Others") echo "selected"; @endif>Others(Default)</option>
+                <option value="Medical" @if ($post->category === "Medical") echo "selected" @endif>Medical</option>
+                <option value="Social" @if ($post->category === "Social") echo "selected"; @endif>Social</option>
+                <option value="Engineering" @if ($post->category === "Engineering") echo "selected" @endif>Engineering</option>
+                <option value="Automotives" @if ($post->category === "Automotives") echo "selected" @endif>Automotives</option>
+                <option value="Mechanics" @if ($post->category === "Mechanics") echo "selected" @endif>Mechanics</option>
+                <option value="Mathematical" @if ($post->category === "Mathematical") echo "selected" @endif>Mathematical</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        {{-- *******  End of Categories  ********--}}
+
          <div class="field">
            <label for="content" class="label">Post title : </label>
            <div class="control">
@@ -64,7 +84,8 @@
 
           <button type="submit" class="button is-primary is-rounded">Save Post</button>
           <a class="button is-primary is-rounded" href="{{ route('posts.show',['slug'=>$post->slug]) }}">Cancel</a>
-        </form>
+        </form>        
+
       </div>
       {{-- *******  End of Post Form  ********--}}
 

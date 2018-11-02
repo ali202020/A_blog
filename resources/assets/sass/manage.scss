@@ -1,3 +1,7 @@
+//====================================================
+//=========== Start Manage layout Styling ============
+//====================================================
+
 .side-menu {
   position: absolute;
   left: 1px !important;
@@ -87,6 +91,28 @@
   }
 
 }
+
+//***********************
+// Edit and Delete Links
+//**********************
+
+.edit-link{
+  color: rgb(0, 121, 211);
+
+}
+.delete-link{
+  color: red;
+
+}
+
+// **********************
+// *******Post Tile
+// *****************
+// .post-tile{
+//   display: flex;
+//   justify-content: center;
+//   flex-shrink: 1
+// }
 
 // .flash-message{
 //   // // position: absolute;
