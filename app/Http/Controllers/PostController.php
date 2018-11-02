@@ -60,6 +60,7 @@ class PostController extends Controller
        $post->title          = $request->title;
        $post->excerpt        = $request->excerpt;
        $post->content        = Purifier::clean($request->content);
+       $post->category       = $request->category;
        $post->published_at   = Carbon::now()->toDateTimeString();
        $post->user_id        = Auth::user()->id;
        if($post->save()){
