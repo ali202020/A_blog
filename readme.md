@@ -23,6 +23,7 @@ ____
 | Pusher  | Is a socket server that provides channels which establish realtime communication between servers, apps and devices|
 | Lodash  | A modern JavaScript utility library delivering modularity, performance & extras.  |
 | Sass  | Css precompiler  |
+| <a href="https://cdn.materialdesignicons.com/3.0.39/">Material Design Icons</a>   |  icon collection allows designers and developers targeting various platforms to download icons in the format, color and size they need for any project.   |
 
 ------
 >**Note** :
