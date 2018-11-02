@@ -14,7 +14,7 @@ ____
 | Name               |   Description                      |
 | ------------------ | ---------------------------------- |
 | laravel 5.5        | Php frame work                     |
-| Vue.js             | javascript fram work               |
+| Vue.js             | javascript frame work               |
 | Jquery             | javascript library                 |
 | <a href="https://github.com/axios/axios">axios/axios</a>              | Promise based HTTP client for the browser  |
 | Bulma              | open source CSS framework based on Flexbox and used by more |
