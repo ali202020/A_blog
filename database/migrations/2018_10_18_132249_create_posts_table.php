@@ -18,11 +18,12 @@ class CreatePostsTable extends Migration
             $table->string('slug')->unique();
             $table->integer('user_id')->unsigned();
             $table->string('title');
+            $table->string('category');
             $table->text('excerpt');
             $table->longText('content');
             $table->integer('status')->default(1);
             $table->integer('type')->unsigned()->default(1);
-            $table->bigInteger('comment_count')->unsigned();
+            $table->bigInteger('comment_count')->unsigned()->default(0);
             $table->dateTime('published_at');
             $table->timestamps();
 
