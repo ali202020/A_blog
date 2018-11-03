@@ -132,15 +132,30 @@
       template:'<span v-on:click.prevent="active = !active">\
                   <a href=""><small><i class="fa fa-share"></i>&nbsp;Share</small></a>\
                   <div v-bind:class="{share_dropdown_hide:!active , share_dropdown:active}">\
-                    <a href=""><small><i class="fa fa-facebook"></i>&nbsp; Share On Facebook</small></a>\
+                    <a href="#" v-on:click="popupFacebook">\
+                      <small><i class="fa fa-facebook"></i>&nbsp; Share On Facebook</small>\
+                    </a>\
                     <hr>\
-                    <a href=""><small><i class="fa fa-twitter"></i>&nbsp; Share On Twitter</small></a>\
+                    <a href="#" v-on:click="popupTwitter">\
+                      <small><i class="fa fa-twitter"></i>&nbsp; Share On Twitter</small>\
+                    </a>\
                   </div>\
                 </span>',
       data:function(){return{
         active:false,
+
       }},
       methods:{
+        popupTwitter:function(){
+          window.open('https://twitter.com/intent/tweet?text=post_title&url=#', '_blank', 'scrollbars=0, resizable=1, menubar=0, left=400, top=200, width=550, height=440, toolbar=0, status=0');
+          return false;
+        },
+        popupFacebook:function(){
+          window.open('https://www.facebook.com/sharer/sharer.php?u=#', '_blank', 'scrollbars=0, resizable=1, menubar=0, left=400, top=200, width=650, height=410, toolbar=0, status=0');
+          return false;
+
+        },
+
 
       },
     });
@@ -148,7 +163,7 @@
     var app = new Vue({
       el:'#app',
       data:{
-        isPublic:true,        
+        isPublic:true,
       },
       methods:{
 
