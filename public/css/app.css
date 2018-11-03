@@ -18776,6 +18776,62 @@ nav navbar-brand img {
   display: -ms-flexbox;
   display: block;
   margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+.posts-container .is-customized-tile .custom-title {
+  margin-bottom: 7px;
+}
+
+.posts-container .is-customized-tile .custom-title p {
+  display: inline;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.posts-container .is-customized-tile .custom-title a {
+  color: grey;
+}
+
+.posts-container .is-customized-tile .custom-title a:hover {
+  color: #00d1b2;
+}
+
+.posts-container .is-customized-tile hr {
+  margin: 5px;
+}
+
+.posts-container .is-customized-tile .post-box-features {
+  position: relative;
+}
+
+.posts-container .is-customized-tile .post-box-features .share_dropdown_hide {
+  display: none;
+}
+
+.posts-container .is-customized-tile .post-box-features .share_dropdown {
+  max-width: 150px;
+  border: 0px grey solid;
+  -webkit-box-shadow: 0px 0px 1px;
+          box-shadow: 0px 0px 1px;
+  border-radius: 5px;
+  padding: 5px;
+  z-index: 20;
+  position: absolute;
+  left: 120px;
+  background-color: white;
+}
+
+.posts-container .is-customized-tile .post-box-features a {
+  color: grey;
+}
+
+.posts-container .is-customized-tile .post-box-features a:hover {
+  color: #00d1b2;
+}
+
+.posts-container .is-customized-tile .post-box-features span {
+  margin-left: 10px;
 }
 
 .posts-container .tags {
@@ -18788,10 +18844,6 @@ nav navbar-brand img {
 
 .posts-container .tags .tag {
   padding: 5px;
-}
-
-.posts-container .tags .custom-title {
-  margin-bottom: 7px !important;
 }
 
 .post-widget-container {
