@@ -45,7 +45,7 @@
                       <b-icon class="media-left" icon="new-box"></b-icon>
                       <div class="media-content">
                           <h3>Latest</h3>
-                          <small>Only friends can see</small>
+                          <small>Everyone can see</small>
                       </div>
                   </div>
               </b-dropdown-item>
@@ -64,28 +64,42 @@
         {{-- ***  Start Of Create Posts Container ***--}}
         <div class="column is-9 p-r-5">
           <div class="posts-container">
-            {{-- <div class="tile is-ancestor post-tile m-t-5"> --}}
                 @foreach ($posts as $post)
-                {{-- <div class="tile is-parent is-8 is-vertical box"> --}}
                   <div class="tile is-customized-tile box">
-                    <p class="title custom-title">{{$post->title}}</p>
+                    {{-- Start of Post Title --}}
+                    <div class="custom-title">
+                      <p>{{$post->title}}</p>
+                      &nbsp;
+                      <span><small>By</small></span>
+                      <a href=""><span><small>{{$post->user->name}}</small></span></a>
+                      &nbsp;
+                      <span><small>Published at</small></span>
+                      <span><small>{{$post->published_at}}</small></span>
+                    </div>
+                    {{-- ---------------------- --}}
 
-                    <div class="tags has-addons">
-                      <span class="tag is-dark">By</span>
-                      <span class="tag is-primary">{{$post->user->name}}</span>
-                    </div>
-                    <div class="tags has-addons">
-                      <span class="tag is-dark">Published at</span>
-                      <span class="tag is-primary">{{$post->published_at}}</span>
-                    </div>
+
                     {{-- Start Of Post Content --}}
                     <div class="content">
                       {{$post->excerpt}} <span>....<a href="{{route('posts.show',['slug'=> $post->slug])}}">Readmore</a></span>
                     </div>
+                    {{-- --------------------- --}}
+                    <hr>
+
+                    {{-- Start Of Post Box Features --}}
+                    <div class="post-box-features">
+                      <span>
+                        <a href=""><small><i class="fa fa-comments"></i>&nbsp;{{$post->comments->count()}}&nbsp;Comments</small></a>
+                      </span>
+                      {{-- Share DropDown Component --}}
+                      <share-dropdown></share-dropdown>
+                    </div>
+                    {{-- -------------------------- --}}
+
+
                   </div>
-                {{-- </div> --}}
+
                 @endforeach
-            {{-- </div> --}}
           </div>
         </div>
         {{-- ***  End Of Create Posts Container ***--}}
@@ -113,12 +127,31 @@
 
 @section('scripts')
   <script>
+    //****** Share drop-down component
+    Vue.component('share-dropdown',{
+      template:'<span v-on:click.prevent="active = !active">\
+                  <a href=""><small><i class="fa fa-share"></i>&nbsp;Share</small></a>\
+                  <div v-bind:class="{share_dropdown_hide:!active , share_dropdown:active}">\
+                    <a href=""><small><i class="fa fa-facebook"></i>&nbsp; Share On Facebook</small></a>\
+                    <hr>\
+                    <a href=""><small><i class="fa fa-twitter"></i>&nbsp; Share On Twitter</small></a>\
+                  </div>\
+                </span>',
+      data:function(){return{
+        active:false,
+      }},
+      methods:{
+
+      },
+    });
+    //***********************
     var app = new Vue({
       el:'#app',
       data:{
-        isPublic:true,
+        isPublic:true,        
       },
       methods:{
+
       },
     });
   </script>
