@@ -24,6 +24,7 @@ ____
 | Lodash  | A modern JavaScript utility library delivering modularity, performance & extras.  |
 | Sass  | Css precompiler  |
 | <a href="https://cdn.materialdesignicons.com/3.0.39/">Material Design Icons</a>   |  icon collection allows designers and developers targeting various platforms to download icons in the format, color and size they need for any project.   |
+|  <a href="https://fontawesome.com/">Font Awesome</a> | the web's most popular icon set and toolkit.  |
 
 ------
 >**Note** :
