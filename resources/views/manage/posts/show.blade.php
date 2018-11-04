@@ -61,7 +61,8 @@
             {{-- ****************************************** --}}
             <hr>
             <p class="subtitle">Comments : </p>
-            <article class="media">
+
+            <article class="media" v-for="comment in comments">
               <figure class="media-left">
                 <p class="image is-64x64">
                   <img src="https://bulma.io/images/placeholders/128x128.png">
@@ -70,11 +71,11 @@
               <div class="media-content">
                 <div class="content">
                   <p>
-                    <strong>Barbara Middleton</strong>
+                    <strong>@{{comment.user.name}}</strong>
                     <br>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
+                    @{{comment.body}}
                     <br>
-                    <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
+                    <small><a>Like</a> · <a>Reply</a> · @{{comment.created_at}}</small>
                   </p>
                 </div>
               </div>
@@ -91,12 +92,12 @@
                 <div class="media-content">
                   <div class="field">
                     <p class="control">
-                      <textarea class="textarea" placeholder="Add a comment..."></textarea>
+                      <textarea class="textarea" placeholder="Add a comment..." v-model="comment_body"></textarea>
                     </p>
                   </div>
                   <div class="field">
                     <p class="control">
-                      <button class="button is-primary">Post comment</button>
+                      <button class="button is-primary" @click="saveComment">Post comment</button>
                     </p>
                   </div>
                 </div>
@@ -145,3 +146,65 @@
   </div>
 
 @endsection
+
+
+{{-- Start Of Script Section --}}
+@section('scripts')
+  <script>
+
+  const app = new Vue({
+    el:'#app',
+    data:{
+      comment_body:'',
+      comments:{},
+      user:{!! Auth::check()? Auth::user()->toJson() : 'null' !!}
+
+    },
+    mounted:function(){
+      this.getComments();
+      this.eventListener();
+    },
+    methods:{
+      getComments:function(){
+        var gets =this;
+        axios.get('/api/posts/'+{{$post->id}}+'/comments')
+             .then((response)=>{
+               gets.comments = response.data;
+             })
+             .catch(function(error){
+               console.log(error.response.status);
+             });
+
+      },
+      saveComment:function(){
+        var instance = this;
+        axios.post('/api/posts/'+{{$post->id}}+'/comment',{
+              body:instance.comment_body,
+              api_token:this.user.api_token
+             })
+             .then((response)=>{
+               //console.log(response.data);
+               instance.comments.unshift(response.data);
+               instance.comment_body = '';
+             })
+             .catch(function(error){
+               console.log(error);
+               console.log(error.response.status);
+             });
+      },
+      eventListener:function(){
+        Echo.channel('post.'+{{$post->id}})
+            .listen('NewComment',(comment)=>{              
+              this.comments.unshift(comment);
+            });
+      },
+
+    },
+  });
+
+
+
+
+  </script>
+@endsection
+{{-- ************************ --}}
