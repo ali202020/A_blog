@@ -13,10 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('posts/{post}/comments','CommentController@index');
+
 Route::middleware('auth:api')->group(function(){
   Route::get('/user', function (Request $request) {
       return $request->user();
   });
   Route::get('/posts/unique','PostController@apiCheckUnique')->name('api.slug.unique');
+  Route::post('posts/{post}/comment','CommentController@store');
 
 });

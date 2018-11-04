@@ -17,16 +17,16 @@ class NewComment implements ShouldBroadcastNow
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
 
-    private $comment;
+    public $comment;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Comment $comment)
+    public function __construct(Comment $new_comment)
     {
-        $this->comment = $comment;
+        $this->comment = $new_comment;
     }
 
     /**
@@ -36,6 +36,18 @@ class NewComment implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new Channel('post.'.$this->comment->post->id);
+        return new Channel('post.'.$this->comment->post_id);
+    }
+
+    public function broadcastWith()
+    {
+      return [
+        "body" => $this->comment->body,
+        "created_at"=> $this->comment->created_at->toFormattedDateString(),
+        "user" => [
+          "name" => $this->comment->user->name
+        ]
+      ];
+
     }
 }
