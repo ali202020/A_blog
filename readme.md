@@ -4,9 +4,8 @@
 * The 'A' blog is a blog website implemented in Laravel 5.5 and is intended to be and interactive platform , in which users and publish posts and expressing their opinions by commenting on each other posts.
 ____
 ###### __This blog implements the following Features -on technical behalf__-:
-1. A full 'CRUD' system for adding (Users , Posts , Comments)
-2. A Real-time Commenting Engine which is implemented with 'AJAX' and 'Pusher' socket server
-   > Hint : this feature has already been implemented and will be integrated  with the blog soon
+1. A full 'CRUD' system for (Users , Posts , Comments)
+2. A Real-time Commenting Engine which is implemented with 'AJAX' and 'Pusher' socket server   
 3. Users are authenticated via laravel authentication facade
 ----
 * ###### **Technologies , packages and plug-ins used for implementing this work** :
