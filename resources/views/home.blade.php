@@ -95,8 +95,6 @@
                       <share-dropdown></share-dropdown>
                     </div>
                     {{-- -------------------------- --}}
-
-
                   </div>
 
                 @endforeach
@@ -127,7 +125,7 @@
 
 @section('scripts')
   <script>
-    //****** Share drop-down component
+    //****************************    Share drop-down component   **************************************//
     Vue.component('share-dropdown',{
       template:'<span v-on:click.prevent="active = !active">\
                   <a href=""><small><i class="fa fa-share"></i>&nbsp;Share</small></a>\
@@ -143,7 +141,6 @@
                 </span>',
       data:function(){return{
         active:false,
-
       }},
       methods:{
         popupTwitter:function(){
@@ -155,22 +152,18 @@
           return false;
 
         },
-
-
       },
     });
-    //***********************
+    //******************************************************************************************************//
     var app = new Vue({
       el:'#app',
       data:{
         isPublic:true,
       },
       methods:{
-
       },
     });
   </script>
 @endsection
 {{-- Vue js End scripts --}}
-
 @endsection

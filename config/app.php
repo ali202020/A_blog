@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'Africa/Cairo',
+    'timezone' => 'Africa/Cairo', 
 
     /*
     |--------------------------------------------------------------------------
@@ -234,6 +234,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
         'LaraFlash' => DevMarketer\LaraFlash\LaraFlashFacade::class,
+        'Pusher' => Pusher\Pusher::class,
 
     ],
 
