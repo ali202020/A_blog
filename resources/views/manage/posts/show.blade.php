@@ -29,7 +29,7 @@
             <p class="title">{{$post->title}}</p>
             <p class="subtitle">
               BY : {{$post->user->name}}&nbsp;&nbsp;&nbsp;
-              Published at : {{$post->published_at}}
+              Published at : {{$post->published_at->toFormattedDateString()}}
             </p>
             {{-- Start Of Post Content --}}
             <p>
@@ -194,7 +194,7 @@
       },
       eventListener:function(){
         Echo.channel('post.'+{{$post->id}})
-            .listen('NewComment',(comment)=>{              
+            .listen('NewComment',(comment)=>{
               this.comments.unshift(comment);
             });
       },

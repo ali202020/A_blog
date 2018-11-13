@@ -18765,35 +18765,47 @@ nav navbar-brand img {
   color: #7c7c7c;
 }
 
-.posts-container {
-  margin-top: 15px;
-  margin-bottom: 12px !important;
-}
-
 .posts-container .is-customized-tile {
   display: -webkit-box;
   display: -ms-flexbox;
   display: block;
   margin-bottom: 10px;
-  padding-bottom: 5px;
+  padding: 5px;
+}
+
+.posts-container .is-customized-tile .content {
+  margin: 5px;
 }
 
 .posts-container .is-customized-tile .custom-title {
-  margin-bottom: 7px;
+  margin: 5px;
+}
+
+.posts-container .is-customized-tile .custom-title ul li:first-child {
+  background-color: #ecf0f1;
+  border: 1px solid #ecf0f1;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.posts-container .is-customized-tile .custom-title ul li span {
+  font-size: 13px;
+  font-weight: lighter;
+}
+
+.posts-container .is-customized-tile .custom-title ul li span a {
+  color: #34495e;
+  font-weight: bold;
+}
+
+.posts-container .is-customized-tile .custom-title ul li span a:hover {
+  color: #00d1b2;
 }
 
 .posts-container .is-customized-tile .custom-title p {
   display: inline;
   font-size: 1.5rem;
   font-weight: bold;
-}
-
-.posts-container .is-customized-tile .custom-title a {
-  color: grey;
-}
-
-.posts-container .is-customized-tile .custom-title a:hover {
-  color: #00d1b2;
 }
 
 .posts-container .is-customized-tile hr {

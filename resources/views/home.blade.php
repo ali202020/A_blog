@@ -59,48 +59,52 @@
     {{-- ************************************ --}}
     {{-- *******  Start of Post tile  ********--}}
     {{-- *************************************--}}
-    <div class="container">
-      <div class="columns">
+    <div class="container m-t-15">
+      <div class="columns m-t-5">
         {{-- ***  Start Of Create Posts Container ***--}}
-        <div class="column is-9 p-r-5">
-          <div class="posts-container">
-                @foreach ($posts as $post)
-                  <div class="tile is-customized-tile box">
-                    {{-- Start of Post Title --}}
-                    <div class="custom-title">
-                      <p>{{$post->title}}</p>
-                      &nbsp;
-                      <span><small>By</small></span>
-                      <a href=""><span><small>{{$post->user->name}}</small></span></a>
-                      &nbsp;
-                      <span><small>Published at</small></span>
-                      <span><small>{{$post->published_at->toFormattedDateString()}}</small></span>
-                    </div>
-                    {{-- ---------------------- --}}
+        <div class="column is-9">
+            <div class="columns is-multiline">
+              @foreach ($posts as $post)
+                <div class="column is-half posts-container">
+                  {{-- <div class="posts-container"> --}}
+                    <div class="tile is-customized-tile box">
+                      {{-- Start of Post Title --}}
+                      <div class="custom-title">
+                        <ul>
+                          <li>
+                            <span><bold>By </bold></span><span><a href="">{{$post->user->name}}</a></span>
+                            <span><bold>Published at </bold></span><span>{{$post->published_at->toFormattedDateString()}}</span>
+                          </li>
+                          <li><p>{{$post->title}}</p></li>
+                        </ul>
+                      </div>
+                      {{-- ---------------------- --}}
 
 
-                    {{-- Start Of Post Content --}}
-                    <div class="content">
-                      {{$post->excerpt}} <span>....<a href="{{route('posts.show',['slug'=> $post->slug])}}">Readmore</a></span>
-                    </div>
-                    {{-- --------------------- --}}
-                    <hr>
+                      {{-- Start Of Post Content --}}
+                      <div class="content">
+                        {{$post->excerpt}} <span>....<a href="{{route('posts.show',['slug'=> $post->slug])}}">Readmore</a></span>
+                      </div>
+                      {{-- --------------------- --}}
+                      <hr>
 
-                    {{-- Start Of Post Box Features --}}
-                    <div class="post-box-features">
-                      <span>
-                        <a href=""><small><i class="fa fa-comments"></i>&nbsp;{{$post->comments->count()}}&nbsp;Comments</small></a>
-                      </span>
-                      {{-- Share DropDown Component --}}
-                      <share-dropdown></share-dropdown>
-                    </div>
-                    {{-- -------------------------- --}}
+                      {{-- Start Of Post Box Features --}}
+                      <div class="post-box-features">
+                        <span>
+                          <a href=""><small><i class="fa fa-comments"></i>&nbsp;{{$post->comments->count()}}&nbsp;Comments</small></a>
+                        </span>
+                        {{-- Share DropDown Component --}}
+                        <share-dropdown></share-dropdown>
+                      </div>
+                      {{-- -------------------------- --}}
+                    {{-- </div> --}}
                   </div>
-
-                @endforeach
-          </div>
+                </div>
+              @endforeach
+            </div>
         </div>
         {{-- ***  End Of Create Posts Container ***--}}
+
 
         {{-- ***  Start Of Create Post Widget ***--}}
         <div class="column is-3 p-l-5">

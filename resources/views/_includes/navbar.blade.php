@@ -6,7 +6,7 @@
         <img src="{{ asset('images/a-logo-1.jpg') }}" alt="Elshazly_logo">
       </a>
 
-      <a href="#" class="navbar-item is-tab is-hidden-mobile m-l-10">Learn</a>
+      <a href="#" class="navbar-item is-tab is-hidden-mobile">Learn</a>
       <a href="#" class="navbar-item is-tab is-hidden-mobile">Discuss</a>
       <a href="#" class="navbar-item is-tab is-hidden-mobile">Share</a>
 
