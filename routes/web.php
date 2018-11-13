@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth.register');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 

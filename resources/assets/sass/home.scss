@@ -36,6 +36,7 @@
 .posts-container
 {
   margin-top: 15px;
+  margin-bottom: 12px !important;  //This overwrites the margin-bottom of the 'box' class
 
   .post-box-header{
 
@@ -120,4 +121,44 @@
 {
   align-items: center;
   justify-content: center;
+}
+
+// Footer widget Customization
+//-------------------------------
+.footer-widget
+{
+  max-width: 277px;
+  margin:0px;
+  padding: 5px;
+  text-align: left;
+  ul{
+    list-style: none;
+    li{
+      font-size: 12px;
+      a{
+        color:#2c3e50
+      }
+      a:hover{
+        color: #7f8c8d;
+      }
+
+    }
+  }
+}
+
+// Advertisement widget Customization
+//-------------------------------
+.ad-widget
+{
+  max-width: 277px;
+  margin:0px;
+  padding: 5px;
+  text-align: center;
+  hr{
+    margin:15px;
+  }
+  .ad-title{
+    font-weight: bold;
+  }
+
 }
