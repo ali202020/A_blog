@@ -18777,6 +18777,16 @@ nav navbar-brand img {
   margin: 5px;
 }
 
+.posts-container .is-customized-tile .content a {
+  color: #90A4AE;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.posts-container .is-customized-tile .content a:hover {
+  color: #00d1b2;
+}
+
 .posts-container .is-customized-tile .custom-title {
   margin: 5px;
 }

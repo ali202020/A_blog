@@ -52,7 +52,16 @@
     //content Customization
     .content{
       margin: 5px;
+      a{
+        color: #90A4AE;
+        font-weight: bold;
+        font-size: 15px;
+      }
+      a:hover{
+        color: #00d1b2;
+      }
     }
+    //**********************
 
 
     // Title Customiztion
@@ -75,8 +84,6 @@
           }
           font-size: 13px;
           font-weight: lighter;
-
-
         }
       }
       p{

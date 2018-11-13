@@ -83,7 +83,7 @@
 
                       {{-- Start Of Post Content --}}
                       <div class="content">
-                        {{$post->excerpt}} <span>....<a href="{{route('posts.show',['slug'=> $post->slug])}}">Readmore</a></span>
+                        {{$post->excerpt}} <span>....<a href="{{route('posts.show',['slug'=> $post->slug])}}">Read more</a></span>
                       </div>
                       {{-- --------------------- --}}
                       <hr>
