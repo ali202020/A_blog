@@ -74,7 +74,7 @@
                       <a href=""><span><small>{{$post->user->name}}</small></span></a>
                       &nbsp;
                       <span><small>Published at</small></span>
-                      <span><small>{{$post->published_at}}</small></span>
+                      <span><small>{{$post->published_at->toFormattedDateString()}}</small></span>
                     </div>
                     {{-- ---------------------- --}}
 
