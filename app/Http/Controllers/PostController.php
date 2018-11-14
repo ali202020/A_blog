@@ -161,4 +161,18 @@ class PostController extends Controller
        return json_encode(Post::where('slug','=',$request->slug)->exists()); //this will return true or false..true if exists ,,false if not exists
 
     }
+
+
+
+    /**
+     * Search the specified Key.
+     *
+     * @param  string  $search_key
+     * @return \Illuminate\Http\Response
+     */
+    public function search($search_key)
+    {
+      $posts = Post::select('slug','title')->where('title','like','%'.$search_key.'%')->get();
+      return json_encode($posts);
+    }
 }
