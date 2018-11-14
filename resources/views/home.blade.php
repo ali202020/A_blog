@@ -72,8 +72,8 @@
                       <div class="custom-title">
                         <ul>
                           <li>
-                            <span><bold>By </bold></span><span><a href="">{{$post->user->name}}</a></span>
-                            <span><bold>Published at </bold></span><span>{{$post->published_at->toFormattedDateString()}}</span>
+                            <span>By </span><span><a href="">{{$post->user->name}}</a></span>
+                            <span>Published at </span><span>{{$post->published_at->toFormattedDateString()}}</span>
                           </li>
                           <li><p>{{$post->title}}</p></li>
                         </ul>

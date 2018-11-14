@@ -31,5 +31,6 @@
     <script src="{{ asset('js/app.js') }}"></script>
     {{-- @include('_includes.notifications.toast') --}}
     @yield('scripts')
+    <script src="../../js/searchbar.js"></script>
 </body>
 </html>

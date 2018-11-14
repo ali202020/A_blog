@@ -3,14 +3,21 @@
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="{{route('home')}}">
-        <img src="{{ asset('images/a-logo-1.jpg') }}" alt="Elshazly_logo">
+        <img src="{{ asset('images/final.png') }}" alt="Elshazly_logo">
       </a>
 
-      <a href="#" class="navbar-item is-tab is-hidden-mobile">Learn</a>
-      <a href="#" class="navbar-item is-tab is-hidden-mobile">Discuss</a>
-      <a href="#" class="navbar-item is-tab is-hidden-mobile">Share</a>
+      <a href="#" class="navbar-item is-tab is-hidden-mobile">Categories</a>
+      <a href="#" class="navbar-item is-tab is-hidden-mobile">Blog</a>
 
-      <input class="input is-small" type="text" placeholder="Find On the Blog" style="margin-top:14px; border-radius:10px">
+      {{-- Start Of Search Bar section --}}
+      <div class="navbar-item search-box">
+        <input class="input is-small search-bar" type="text" placeholder="Find On the Blog">
+        <ul class="panel search-results">
+          {{-- <li class="panel-block">hi</li> --}}          
+        </ul>
+      </div>
+      {{-- End Of Search Bar section --}}
+
 
     </div>
 

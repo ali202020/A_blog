@@ -18738,9 +18738,33 @@ a.is-muted:hover {
   color: red;
 }
 
-nav navbar-brand img {
+nav .navbar-brand .search-box {
+  position: relative;
+}
+
+nav .navbar-brand .search-box .search-results {
+  position: absolute;
+  top: 42px;
+  min-width: 193px;
+  background-color: white;
+}
+
+nav .navbar-brand .search-box .search-results li {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+nav .navbar-brand .search-box .search-results li a {
+  color: #37474F;
+}
+
+nav .navbar-brand .search-box .search-results li a:hover {
+  color: #90A4AE;
+}
+
+nav .navbar-brand img {
   height: 100px;
-  width: 100px;
+  width: 40px;
 }
 
 .secondary-nav {
