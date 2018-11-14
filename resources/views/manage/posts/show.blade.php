@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-  <div class="container">
+  <div class="container m-t-15">
     {{-- *******  Start of Flash Message  ********--}}
     @if (session('status'))
         <article class="message is-success flash-message">
@@ -13,12 +13,12 @@
 
 
 
-    <div class="columns">
+    <div class="columns m-t-5">
       {{-- ************************************ --}}
       {{-- *******  Start of Post tile  ********--}}
       {{-- *************************************--}}
 
-      <div class="column is-9 p-r-5">
+      <div class="column is-9">
         <div class="posts-container">
           <div class="tile is-customized-tile box">
             {{-- ******************************************************* --}}
@@ -27,9 +27,9 @@
             {{-- ******************************************************* --}}
             {{-- ******************************************************* --}}
             <p class="title">{{$post->title}}</p>
-            <p class="subtitle">
-              BY : {{$post->user->name}}&nbsp;&nbsp;&nbsp;
-              Published at : {{$post->published_at->toFormattedDateString()}}
+            <p class="subtitle about-post-info">
+              By : <a href="#">{{$post->user->name}}</a>&nbsp;&nbsp;
+              Published At : {{$post->published_at->toFormattedDateString()}}
             </p>
             {{-- Start Of Post Content --}}
             <p>
@@ -125,20 +125,64 @@
       </div>
       {{-- *******  End of Post tile  ********--}}
 
-      {{-- ************************************--}}
+      {{-- *********************************** --}}
       {{-- ***  Start Of Create Post Widget ***--}}
       {{-- *********************************** --}}
       <div class="column is-3 p-l-5">
-        <div class="tile posts-container is-customized-tile post-widget-container box">
+        {{-- Create post Button --}}
+        <div class="tile posts-container is-customized-tile post-widget-container box ">
+
           @if (Auth::check())
-            <a href="{{route('posts.create')}}" class="button is-primary">Create New Post</a>
+            <a href="{{route('posts.create')}}" class="button is-primary is-half">Create New Post</a>
           @else
-            <a class="button is-primary" title="Please Login To Create A Post" disabled>Create New Post</a>
+            <a class="button is-primary is-half" title="Please Login To Create A Post" disabled>Create New Post</a>
           @endif
         </div>
+        {{-- ***************** --}}
+
+        {{-- Advertisements Section --}}
+        <div class="tile box columns ad-widget">
+          <div class="column is-12">
+            <p class="ad-title">Advertisement</p>
+            <hr>
+            <figure class="image is-4by5">
+              <img src="https://bulma.io/images/placeholders/256x256.png">
+            </figure>
+          </div>
+        </div>
+        {{-- ************************--}}
+
+        {{-- Website Footer section --}}
+        <div class="tile box columns is-multiline footer-widget">
+          <div class="column is-6">
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+            </ul>
+          </div>
+
+          <div class="column is-6">
+            <ul>
+              <li><a href="#">Advertise</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </div>
+
+          <div class="column is-12" style="text-align:center;">
+            <ul>
+              <li><span><a href="#">Content Policy</a></span> | <span><a href="#">Privacy Policy</a></span></li>
+              <li><span><a href="#">User Agreement</a></span> | <span><a href="#">Mod Policy</a></span></li>
+              <li><i class="fa fa-copyright fa-fw"></i> <span>2018 A_BLOG, Inc. All rights reserved</span></li>
+            </ul>
+          </div>
+        </div>
+        {{-- *********************** --}}
+
 
       </div>
-      {{-- ***  End Of Create Post Widget ***--}}
+    {{-- ***  End Of Create Post Widget ***--}}
 
     </div>
 

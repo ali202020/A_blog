@@ -18770,7 +18770,16 @@ nav navbar-brand img {
   display: -ms-flexbox;
   display: block;
   margin-bottom: 10px;
-  padding: 5px;
+  padding: 15px;
+}
+
+.posts-container .is-customized-tile .about-post-info a {
+  color: #1A237E;
+  font-weight: bold;
+}
+
+.posts-container .is-customized-tile .about-post-info a:hover {
+  color: #00d1b2;
 }
 
 .posts-container .is-customized-tile .content {
