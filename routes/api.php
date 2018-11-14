@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('posts/{post}/comments','CommentController@index');
+Route::get('posts/{search_key}','PostController@search');
 
 Route::middleware('auth:api')->group(function(){
   Route::get('/user', function (Request $request) {
