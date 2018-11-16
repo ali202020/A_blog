@@ -6,7 +6,8 @@ ____
 ###### __This blog implements the following Features -on technical behalf__-:
 1. A full 'CRUD' system for (Users , Posts , Comments)
 2. A Real-time Commenting Engine which is implemented with 'AJAX' and 'Pusher' socket server   
-3. Users are authenticated via laravel authentication facade
+3. Users are authenticated via Laravel authentication facade
+4. Dynamic Search Bar Based On AJAX To Reach Easily For The Desired Content You Are Searching For
 ----
 * ###### **Technologies , packages and plug-ins used for implementing this work** :
 
