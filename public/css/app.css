@@ -18758,7 +18758,15 @@ nav .navbar-brand .search-box .search-results li a {
   color: #37474F;
 }
 
+nav .navbar-brand .search-box .search-results li a span {
+  color: #EF5350;
+}
+
 nav .navbar-brand .search-box .search-results li a:hover {
+  color: #90A4AE;
+}
+
+nav .navbar-brand .search-box .search-results li a:hover span {
   color: #90A4AE;
 }
 

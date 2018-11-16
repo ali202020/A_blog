@@ -28,9 +28,15 @@ nav
           font-weight: bold;
           a{
             color:#37474F;
+            span{
+              color:#EF5350;
+            }
           }
           a:hover{
             color: #90A4AE;
+            span{
+              color:#90A4AE;
+            }
           }
         }
 

@@ -17,7 +17,7 @@ $('.search-bar').on('keyup focusin',_.debounce(function(){
              for(i=0;i<response.data.length;i++){
                //console.log(response.data[i].title);
                var title = String(response.data[i].title);                                          //The purpose of 'String' is Ensuring that the value is String
-               var highlightedSk = "<span style='color:#EF5350;'>"+search_key+"</span>";            //highlighted search key
+               var highlightedSk = "<span>"+search_key+"</span>";            //highlighted search key
                var highlightedSr = title.toLowerCase().replace(search_key,highlightedSk);           //highlighted search result  ... we used to lower case to make search or replace process case insensitive
                $('.search-results').append('<li class="panel-block"><a href="/manage/posts/'+response.data[i].slug+'">'+highlightedSr+'</a></li>');
                //$('.search-results').append('<li class="panel-block"><a href="/manage/posts/'+response.data[i].slug+'">'+response.data[i].title.toLowerCase().replace(search_key,"<span style='color:red;'>"+search_key+"</span>")+'</a></li>');
