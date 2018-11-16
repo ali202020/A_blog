@@ -16,7 +16,11 @@ $('.search-bar').on('keyup focusin',_.debounce(function(){
              $('.search-results').empty();
              for(i=0;i<response.data.length;i++){
                //console.log(response.data[i].title);
-               $('.search-results').append('<li class="panel-block"><a href="/manage/posts/'+response.data[i].slug+'">'+response.data[i].title+'</a></li>');
+               var title = String(response.data[i].title);                                          //The purpose of 'String' is Ensuring that the value is String
+               var highlightedSk = "<span style='color:#EF5350;'>"+search_key+"</span>";            //highlighted search key
+               var highlightedSr = title.toLowerCase().replace(search_key,highlightedSk);           //highlighted search result  ... we used to lower case to make search or replace process case insensitive
+               $('.search-results').append('<li class="panel-block"><a href="/manage/posts/'+response.data[i].slug+'">'+highlightedSr+'</a></li>');
+               //$('.search-results').append('<li class="panel-block"><a href="/manage/posts/'+response.data[i].slug+'">'+response.data[i].title.toLowerCase().replace(search_key,"<span style='color:red;'>"+search_key+"</span>")+'</a></li>');
              }
            })
            .catch(function(error){
@@ -27,7 +31,11 @@ $('.search-bar').on('keyup focusin',_.debounce(function(){
     if(search_key.length == 0){
       $('.search-results').empty();
     }
-  },150));
+    //Clearing -initializing- Search result is search key < 3 chars
+    if(search_key.length < 3){
+      $('.search-results').empty();
+    }
+  },100));
 
 //Clearing -initializing- Search result when Search bar is blur
 //-------------------------------------------------------------
