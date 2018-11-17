@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Mews\Purifier\Facades\Purifier;
 use LaraFlash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -54,15 +55,37 @@ class PostController extends Controller
     {
         // 1- validating Data :
           //**postboned
-       // 2- Storing values
+        //2-Obtaining Media
+        if ($request->hasFile('media')) {
+          //Obtaining File Name With Extension
+          $file_name_with_ext = $request->file('media')->getClientOriginalName();
+          //Obtaining File Name Only
+          $file_name = pathinfo($file_name_with_ext,PATHINFO_FILENAME);
+          //Obtaining File Extension
+          $file_ext = $request->file('media')->getClientOriginalExtension();
+          //Generating New Unique Name Of the File to Be Stored In the Data Base
+          $file_name_to_store = $file_name.'_'.time().'.'.$file_ext;
+          //Upload File
+          $path_of_stored_file = $request->file('media')->storeAs('public/media',$file_name_to_store);
+        }else{
+          $file_name_to_store = null;
+        }
+       // 3- Storing values
        $post                 = new Post();
        $post->slug           = $request->slug;
        $post->title          = $request->title;
-       $post->excerpt        = $request->excerpt;
-       $post->content        = Purifier::clean($request->content);
+       if ($request->has('excerpt')) {
+         $post->excerpt        = $request->excerpt;
+       }
+       if($request->has('content')){
+         $post->content        = Purifier::clean($request->content);
+       }
        $post->category       = $request->category;
        $post->published_at   = Carbon::now()->toDateTimeString();
        $post->user_id        = Auth::user()->id;
+       $post->media          = $file_name_to_store;
+
+
        if($post->save()){
          //flash (success)
          $request->session()->flash('status', 'Post Created Successfully');
@@ -112,12 +135,36 @@ class PostController extends Controller
     {
         // 1- validating Data :
           //**postboned
-       // 2- Storing values
-       $post                 = Post::where('slug','=',$slug)->first();
+
+        $post                 = Post::where('slug','=',$slug)->first();
+        //2-Obtaining Media
+        if ($request->hasFile('media')) {
+          //Obtaining File Name With Extension
+          $file_name_with_ext = $request->file('media')->getClientOriginalName();
+          //Obtaining File Name Only
+          $file_name = pathinfo($file_name_with_ext,PATHINFO_FILENAME);
+          //Obtaining File Extension
+          $file_ext = $request->file('media')->getClientOriginalExtension();
+          //Generating New Unique Name Of the File to Be Stored In the Data Base
+          $file_name_to_store = $file_name.'_'.time().'.'.$file_ext;
+          //Deleting Old File
+          $old_file_name = $post->media;
+          Storage::delete('public/media/'.$old_file_name);
+          //Upload New File
+          $path_of_stored_file = $request->file('media')->storeAs('public/media',$file_name_to_store);
+        }
+       // 3- Storing values
+       if($request->hasFile('media')){
+         $post->media = $file_name_to_store;
+       }
        $post->slug           = $request->input('slug');
        $post->title          = $request->input('title');
-       $post->excerpt        = $request->input('excerpt');
-       $post->content        = Purifier::clean($request->input('content'));
+       if ($request->has('excerpt')) {
+         $post->excerpt        = $request->input('excerpt');
+       }
+       if($request->has('content')){
+         $post->content        = Purifier::clean($request->input('content'));
+       }
        if($post->save()){
          //flash (success)
           $request->session()->flash('status', 'Post Updated Successfully');
@@ -141,6 +188,10 @@ class PostController extends Controller
     {
         if(Post::where('slug','=',$slug)->first()->exists()){
           $post = Post::where('slug','=',$slug)->first();
+          //Deleting Media File If found
+          if($post->media != null){
+            Storage::delete('public/media/'.$post->media);
+          }
           $post->delete();
           //flash success
           Session::flash('success-delete', 'Record Deleted Successfully');
