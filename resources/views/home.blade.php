@@ -82,9 +82,17 @@
 
 
                       {{-- Start Of Post Content --}}
-                      <div class="content">
-                        {{$post->excerpt}} <span>....<a href="{{route('posts.show',['slug'=> $post->slug])}}">Read more</a></span>
-                      </div>
+                      @if ($post->media != null)
+                        @if (strpos($post->media,'mp4') != false)
+                          <video src="/storage/media/{{$post->media}}"></video>
+                        @else
+                          <img src="/storage/media/{{$post->media}}" alt="">
+                        @endif
+                      @else
+                        <div class="content">
+                          {{$post->excerpt}} <span>....<a href="{{route('posts.show',['slug'=> $post->slug])}}">Read more</a></span>
+                        </div>
+                      @endif
                       {{-- --------------------- --}}
                       <hr>
 

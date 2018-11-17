@@ -20,7 +20,7 @@
     {{-- *************************************--}}
     <div class="columns">
       <div class="column is-three-quarters">
-        <form action="{{route('posts.store')}}" method="POST" role="form">
+        <form action="{{route('posts.store')}}" method="POST" role="form" enctype="multipart/form-data">
           {{ csrf_field() }}
 
           {{-- *******  Start of Post slug  ********--}}
@@ -37,6 +37,16 @@
 
          {{-- *******  End of Post slug  ********--}}
 
+
+         {{--**********   Start Of Tilte   *******--}}
+         <div class="field">
+           <label for="content" class="label">Post title : </label>
+           <div class="control">
+             <input class="input" type="text" name="title" placeholder="Post Title">
+           </div>
+         </div>
+         {{--*********    End Of Title  **********--}}
+
          {{-- *******  Start of Categories  ********--}}
          <div class="field">
           <label class="label">Category :</label>
@@ -44,7 +54,7 @@
             <div class="select is-primary">
               {{-- Future work: here will be added an input for the user to enter the category --}}
               <select name="category">
-                <option value="Others" selected>Others(Default)</option>
+                <option value="Others" selected>Others</option>
                 <option value="Social">Social</option>
                 <option value="Medical">Medical</option>
                 <option value="Engineering">Engineering</option>
@@ -57,33 +67,102 @@
         </div>
         {{-- *******  End of Categories  ********--}}
 
-         <div class="field">
-           <label for="content" class="label">Post title : </label>
-           <div class="control">
-             <input class="input" type="text" name="title" placeholder="Post Title">
-           </div>
-         </div>
+        {{-- ---------------------------------------------- --}}
+        {{-- -------     Start Of Post Toggle Tab --------- --}}
+        {{-- ---------------------------------------------- --}}
+        <div class="tabs is-toggle is-fullwidth">
+          <ul>
+            <li v-bind:class="{'is-active':textPost}" @click="showTextPost">
+              <a>
+                <span class="icon is-small"><i class="fa fa-book" aria-hidden="true"></i></span>
+                <span>Post</span>
+              </a>
+            </li>
+            <li v-bind:class="{'is-active':imgvidPost}" @click="showImgVidPost">
+              <a>
+                <span class="icon is-small"><i class="fa fa-image" aria-hidden="true"></i></span>
+                <span>Images & Videos</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        {{-- ---------------------------------------------- --}}
 
-         <div class="field">
+
+
+        {{-- ----------------------------------------- --}}
+        {{-- -------     Start Of Text Post  --------- --}}
+        {{-- ----------------------------------------- --}}
+         <div class="field" v-show="textPost">
            <label for="content" class="label">Brief : </label>
            <div class="control">
-             <textarea class="textarea" type="textarea" name="excerpt" placeholder="Write Your Brief Here......" rows="2"></textarea>
+             <textarea class="textarea" type="textarea" name="excerpt" placeholder="Write Your Brief Here that Will Appear For Others In The Home Page......" rows="2"></textarea>
            </div>
          </div>
 
-         <div class="field">
+         <div class="field" v-show="textPost">
            <label for="content" class="label">Post : </label>
            <div class="control">
              <textarea class="textarea textarea_content" type="textarea" name="content" placeholder="Write Your Post Here......" rows="10"></textarea>
            </div>
          </div>
+         {{-- ----------------------------------------- --}}
 
+         {{-- --------------------------------------------- --}}
+         {{-- -------     Start Of Image/Video Post   ----- --}}
+         {{-- --------------------------------------------- --}}
+         <div class="field" v-show="imgvidPost">
+          <div class="file is-centered is-boxed is-success has-name">
+            <label class="file-label">
+              <input class="file-input" type="file" name="media" ref="fileSpecs" v-on:input="getFileName">
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fa fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  Upload Your File…
+                </span>
+              </span>
+              <span class="file-name">
+                @{{fileName}} &nbsp;&nbsp;
+                @{{fileSize}}
+              </span>
+            </label>
+          </div>
+        </div>
+         {{-- -------------------------------------------- --}}
+
+          {{-- ------------------------------------------------------------ --}}
+          {{-- -------     Start Of Url Post (Upcomming Feature) ---------- --}}
+          {{-- ------------------------------------------------------------ --}}
+           {{-- <div class="field">
+             <label for="content" class="label">Brief : </label>
+             <div class="control">
+               <textarea class="textarea" type="textarea" name="excerpt" placeholder="Write Your Brief Here......" rows="2"></textarea>
+             </div>
+           </div>
+
+           <div class="field">
+             <label for="content" class="label">Post : </label>
+             <div class="control">
+               <textarea class="textarea textarea_content" type="textarea" name="content" placeholder="Write Your Post Here......" rows="10"></textarea>
+             </div>
+           </div> --}}
+           {{-- ----------------------------------------------------------- --}}
           <button type="submit" class="button is-primary is-rounded is-fullwidth">Save Post</button>
-
-
         </form>
+        {{-- Start of test inputs  --}}
+        {{-- <div class="button" @click="showTextPost">show text</div>
+        <div class="button" @click="showImgVidPost">show imgvid</div>
+        <br>
+        <div type="text" style="background-color:grey;" v-show="textPost">text</div>
+        <br>
+        <div type="text" style="background-color:grey;" v-show="imgvidPost">img/vid</div> --}}
+        {{-- End of test inputs --}}
       </div>
       {{-- *******  End of Post Form  ********--}}
+
+
 
 
 
@@ -129,11 +208,32 @@
         title:'',
         slug:'',
         api_token:'{{Auth::user()->api_token}}',
+        textPost:true,
+        imgvidPost:false,
+        fileName:"",
+        fileSize:""
+
       },
       methods:{
         parentSlug:function(val){
           this.slug = val;
+        },
+        showTextPost:function(){
+          this.textPost=true;
+          this.imgvidPost=false;
+        },
+        showImgVidPost:function(){
+          this.textPost=false;
+          this.imgvidPost=true;
+        },
+        getFileName:function(){
+          //console.log(this.$refs.fileSpecs);
+          this.fileName = this.$refs.fileSpecs.files[0].name;
+          this.fileSize = ((this.$refs.fileSpecs.files[0].size)/(1024*1024)).toFixed(2)+"MB";
+          console.log(this.fileSize);
         }
+
+
 
       }
     });

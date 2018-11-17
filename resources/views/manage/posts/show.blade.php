@@ -32,9 +32,21 @@
               Published At : {{$post->published_at->toFormattedDateString()}}
             </p>
             {{-- Start Of Post Content --}}
-            <p>
-              {!! $post->content !!}
-            </p>
+            @if ($post->media != null)
+              @if (strpos($post->media,'mp4') != false)
+                <video src="/storage/media/{{$post->media}}"></video>
+              @else
+                <div class="is-centered">
+                  <img src="/storage/media/{{$post->media}}" alt="">
+                </div>
+              @endif
+            @else
+              <p>
+                {!! $post->content !!}
+              </p>
+            @endif
+
+            {{-- End Of Post Content --}}
 
             {{-- Only authenticated user who is the owner of the post is the only one who can edit it --}}
             <br>
