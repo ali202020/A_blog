@@ -19,10 +19,9 @@ class CreatePostsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->string('category');
-            $table->text('excerpt');
-            $table->longText('content');
-            $table->string('post_image')->nullable();
-            $table->string('video_url')->nullable();
+            $table->text('excerpt')->nullable();
+            $table->longText('content')->nullable();
+            $table->string('media')->nullable();
             $table->integer('status')->default(1);
             $table->integer('type')->unsigned()->default(1);
             $table->bigInteger('comment_count')->unsigned()->default(0);
